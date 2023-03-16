@@ -1,42 +1,79 @@
-html {
-    font-size: 10px;
-    background: white;
+  html {
+    background: black;
     background-size: cover;
   }
 
-  .result{
+  .display {
+    width: 100%;
+  }
+
+  .display,
+  .score,
+  .message {
+    flex-direction: column;
     display: flex;
-    flex: 1;
-    font-size: 35px;
+  }
+
+  .display,
+  .score,
+  .message,
+  .buttons {
+    flex: 1 1 auto;
     align-items: center;
     justify-content: center;
   }
 
-  .message{
-    display: flex;
-    flex: 1;
-    font-size: 45px;
-    align-items: center;
-    justify-content: center;
+  .score {
+    margin: 45px;
+  }
+
+  .message {
+    margin: 25px;
   }
 
   .buttons {
-    display: flex;
-    flex: 1;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
+    margin: 45px;
+  }
+
+  .text {
+    font-family: Courier New, Courier,
+      Lucida Sans Typewriter,
+      Lucida Typewriter,
+      monospace;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 24px;
+    line-height: 26.4px;
+    color: antiquewhite;
+    margin: 0;
+  }
+
+  #note {
+    font-size: 16px;
+  }
+
+  #result {
+    font-size: 36px;
+    font-weight: 700;
   }
 
   .button {
-    border: .4rem solid black;
-    border-radius: .5rem;
-    margin: 1rem;
-    font-size: 1.5rem;
-    padding: 1rem .5rem;
-    transition: all .07s ease;
-    width: 10rem;
-    text-align: center;
-    color: white;
-    background: rgba(0,0,0,0.4);
-    text-shadow: 0 0 .5rem black;
+    background-color: black;
+    padding: 0;
+    border: 0;
   }
+
+  .button img {
+    border: none;
+    width: 100px;
+    height: 100px;
+  }
+  
+.button:hover {background-color: antiquewhite}
+
+.button:active {
+  background-color: antiquewhite;
+  transform: translateY(-4px);
+}

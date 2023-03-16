@@ -1,16 +1,19 @@
         let arg = ['Rock','Paper','Scissors'];
 
-        let computerWins = 0;
-        let playerWins = 0;
+        let compScore = 0;
+        let playerScore = 0;
 
         const player = document.querySelector("#player-score");
-        player.textContent = `Player Score: ${playerWins}`;
+        player.textContent = `Player Score: ${playerScore} `;
         
         const computer = document.querySelector("#comp-score");
-        computer.textContent = `Computer Score: ${computerWins}`;
+        computer.textContent = `Computer Score: ${compScore}`;
 
-        let message = document.querySelector(".message");
-        message.textContent = "May the Best Win!";
+        const result = document.querySelector("#result");
+        result.textContent = `LET'S HANDLE THIS LIKE ADULTS!`;
+
+        const note = document.querySelector("#note");
+        note.textContent = `Make a choice to start`;
 
         const buttons = document.querySelectorAll('.button');
 
@@ -18,47 +21,51 @@
             playRound(button.id, getComputerChoce());
             })
         })
-
+        
         function getComputerChoce()
         {
             return arg[Math.floor(Math.random()*arg.length)];
         }
 
-        function playRound(playerSelection, computerSelection)
+        function playRound(playerChoice, compChoice)
         {
-            if(playerSelection == computerSelection 
-                && (playerWins != 0))
+            if(playerChoice == compChoice)
             {
-                message.textContent ='Draw! Try again.';
+                result.textContent ='Draw!';
+                note.textContent = 'Try again.';
             }
-            else if((playerSelection == 'Rock' && computerSelection == 'Scissors')
-            ||(playerSelection == 'Paper' && computerSelection == 'Rock')
-            ||(playerSelection == 'Scissors' && computerSelection == 'Paper'))
+            else if((playerChoice == 'Rock' && compChoice == 'Scissors')
+            ||(playerChoice == 'Paper' && compChoice == 'Rock')
+            ||(playerChoice == 'Scissors' && compChoice == 'Paper'))
             {
-                playerWins += 1;
-                player.textContent = `Player Score: ${playerWins}`;
-                computer.textContent = `Computer Score: ${computerWins}`;
-                message.textContent = 'You Win!'+' '+ playerSelection +' '+ 'beats' +' '+ computerSelection;
+                playerScore += 1;
+                player.textContent = `Player Score: ${playerScore} `;
+                computer.textContent = `Computer Score: ${compScore}`;
+                result.textContent = 'You Win!';
+                note.textContent = playerChoice +' '+ 'beats' +' '+ compChoice;
             }
             else
             {
-                computerWins += 1;
-                player.textContent = `Player Score: ${playerWins}`;
-                computer.textContent = `Computer Score: ${computerWins}`;
-                message.textContent = 'You Lose!'+' '+ computerSelection +' '+ 'beats' +' '+ playerSelection;
+                compScore += 1;
+                player.textContent = `Player Score: ${playerScore} `;
+                computer.textContent = `Computer Score: ${compScore}`;
+                result.textContent = 'You Lose!';
+                note.textContent = compChoice +' '+ 'beats' +' '+ playerChoice;
             }
 
             
-            if(playerWins == 5)
+            if(playerScore == 5)
             {
-                message.textContent = 'Congratulations! Make a choice to restart the game';
-                playerWins = 0;
-                computerWins = 0;
+                result.textContent = 'Congratulations!';
+                note.textContent = 'Make a choice to restart the game';
+                playerScore = 0;
+                compScore = 0;
             }
-            if(computerWins == 5)
+            if(compScore == 5)
             {
-                message.textContent = 'Sorry, try again! Make a choice to restart the game';
-                playerWins = 0;
-                computerWins = 0;
+                result.textContent = 'Sorry, try again!';
+                note.textContent = 'Make a choice to restart the game';
+                playerScore = 0;
+                compScore = 0;
             }
         }
